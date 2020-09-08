@@ -16,30 +16,46 @@ theInput.addEventListener("input", function () {
         document.getElementById("rgb").innerHTML = "RGB: " + newcolorhexToRGB;
 
 
-        r /= 255;
-        g /= 255;
-        b /= 255;
+        convertedred /= 255;
+        convertedgreen /= 255;
+        convertedblue /= 255;
+        console.log(convertedred)
+        console.log(convertedgreen)
+        console.log(convertedblue)
+
 
         let h, s, l;
 
-        const min = Math.min(r, g, b);
-        const max = Math.max(r, g, b);
+        const min = Math.min(convertedred, convertedgreen, convertedblue);
+        console.log(min)
+
+        const max = Math.max(convertedred, convertedgreen, convertedblue);
+        console.log(max)
 
         if (max === min) {
             h = 0;
+            // console.log(h)
         } else
-        if (max === r) {
-            h = 60 * (0 + (g - b) / (max - min));
+        if (max === convertedred) {
+            h = 60 * (0 + (convertedgreen - convertedblue) / (max - min));
+            // console.log(h)
+
         } else
-        if (max === g) {
-            h = 60 * (2 + (b - r) / (max - min));
+        if (max === convertedgreen) {
+            h = 60 * (2 + (convertedblue - convertedred) / (max - min));
+            // console.log(h)
+
         } else
-        if (max === b) {
-            h = 60 * (4 + (r - g) / (max - min));
+        if (max === convertedblue) {
+            h = 60 * (4 + (convertedred - convertedgreen) / (max - min));
+            // console.log(h)
+
         }
 
-        if (h < 0) {
+        if (h <= 0) {
             h = h + 360;
+            // console.log(h)
+
         }
 
         l = (min + max) / 2;
@@ -52,13 +68,11 @@ theInput.addEventListener("input", function () {
         // multiply s and l by 100 to get the value in percent, rather than [0,1]
         s *= 100;
         let roundS = Math.round(s);
-        console.log(roundS)
         l *= 100;
         let roundL = Math.round(l);
-        console.log(roundL)
 
 
-        console.log("hsl(%f,%f%,%f%)", h, roundS, roundL); // just for testing
+        // console.log("hsl(%f,%f%,%f%)", h, roundS, roundL); // just for testing
         document.getElementById("HSL").innerHTML = "HSL: " + h + "," + roundS + "," + roundL;
 
 
