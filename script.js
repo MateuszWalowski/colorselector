@@ -66,6 +66,9 @@ theInput.addEventListener("input", function () {
             s = (max - l) / (Math.min(l, 1 - l));
         }
         // multiply s and l by 100 to get the value in percent, rather than [0,1]
+        let roundH = Math.round(h);
+
+
         s *= 100;
         let roundS = Math.round(s);
         l *= 100;
@@ -73,7 +76,7 @@ theInput.addEventListener("input", function () {
 
 
         // console.log("hsl(%f,%f%,%f%)", h, roundS, roundL); // just for testing
-        document.getElementById("HSL").innerHTML = "HSL: " + h + "," + roundS + "," + roundL;
+        document.getElementById("HSL").innerHTML = "HSL: " + roundH + "," + roundS + "," + roundL;
 
 
     }
